@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fd.report.dao.collinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.fd.report.entity.collinfo" >
+    <id column="collInfoId" property="collinfoid" jdbcType="INTEGER" />
+    <result column="sendCom" property="sendcom" jdbcType="VARCHAR" />
+    <result column="sampType" property="samptype" jdbcType="VARCHAR" />
+    <result column="patient" property="patient" jdbcType="VARCHAR" />
+    <result column="FDsampCode" property="fdsampcode" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+    <result column="testIll" property="testill" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+    <result column="orig" property="orig" jdbcType="VARCHAR" />
+    <result column="family" property="family" jdbcType="VARCHAR" />
+    <result column="collMan" property="collman" jdbcType="VARCHAR" />
+    <result column="buildTime" property="buildtime" jdbcType="DATE" />
+    <result column="index_seq" property="indexSeq" jdbcType="VARCHAR" />
+    <result column="bookCode" property="bookcode" jdbcType="VARCHAR" />
+    <result column="testType" property="testtype" jdbcType="VARCHAR" />
+    <result column="pdfCompany" property="pdfcompany" jdbcType="VARCHAR" />
+    <result column="delflag" property="delflag" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="flat" property="flat" jdbcType="VARCHAR" />
+    <result column="testProInfoTestSkill" property="testproinfotestskill" jdbcType="VARCHAR" />
+    <result column="downTime" property="downtime" jdbcType="DATE" />
+    <result column="sendSamp" property="sendsamp" jdbcType="DATE" />
+    <result column="sendDet" property="senddet" jdbcType="VARCHAR" />
+    <result column="back" property="back" jdbcType="VARCHAR" />
+    <result column="doctor" property="doctor" jdbcType="VARCHAR" />
+    <result column="postname" property="postname" jdbcType="VARCHAR" />
+    <result column="posttele" property="posttele" jdbcType="VARCHAR" />
+    <result column="postemail" property="postemail" jdbcType="VARCHAR" />
+    <result column="cardId" property="cardid" jdbcType="VARCHAR" />
+    <result column="tele" property="tele" jdbcType="VARCHAR" />
+    <result column="parentOrig" property="parentorig" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="testDeep" property="testdeep" jdbcType="VARCHAR" />
+    <result column="charge" property="charge" jdbcType="VARCHAR" />
+    <result column="reportIf" property="reportif" jdbcType="VARCHAR" />
+    <result column="reportLang" property="reportlang" jdbcType="VARCHAR" />
+    <result column="collTime" property="colltime" jdbcType="DATE" />
+    <result column="reportPerson" property="reportperson" jdbcType="VARCHAR" />
+    <result column="reportTime" property="reporttime" jdbcType="VARCHAR" />
+    <result column="reportCheck" property="reportcheck" jdbcType="VARCHAR" />
+    <result column="reportCheckTime" property="reportchecktime" jdbcType="VARCHAR" />
+    <result column="Ill" property="ill" jdbcType="VARCHAR" />
+    <result column="Illtem" property="illtem" jdbcType="VARCHAR" />
+    <result column="state3" property="state3" jdbcType="VARCHAR" />
+    <result column="bookCodeTemp" property="bookcodetemp" jdbcType="VARCHAR" />
+    <result column="sampTypeTemp" property="samptypetemp" jdbcType="VARCHAR" />
+    <result column="testTypeTemp" property="testtypetemp" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fd.report.entity.collinfoWithBLOBs" extends="BaseResultMap" >
+    <result column="otherIll" property="otherill" jdbcType="LONGVARCHAR" />
+    <result column="judge" property="judge" jdbcType="LONGVARCHAR" />
+    <result column="otherexp" property="otherexp" jdbcType="LONGVARCHAR" />
+    <result column="sampCollTime" property="sampcolltime" jdbcType="LONGVARCHAR" />
+    <result column="linkId" property="linkid" jdbcType="LONGVARCHAR" />
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    collInfoId, sendCom, sampType, patient, FDsampCode, sex, age, testIll, stage, orig, 
+    family, collMan, buildTime, index_seq, bookCode, testType, pdfCompany, delflag, state, 
+    flat, testProInfoTestSkill, downTime, sendSamp, sendDet, back, doctor, postname, 
+    posttele, postemail, cardId, tele, parentOrig, address, testDeep, charge, reportIf, 
+    reportLang, collTime, reportPerson, reportTime, reportCheck, reportCheckTime, Ill, 
+    Illtem, state3, bookCodeTemp, sampTypeTemp, testTypeTemp
+  </sql>
+  <sql id="Blob_Column_List" >
+    otherIll, judge, otherexp, sampCollTime, linkId, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from collinfo
+    where collInfoId = #{collinfoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from collinfo
+    where collInfoId = #{collinfoid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fd.report.entity.collinfoWithBLOBs" >
+    insert into collinfo (collInfoId, sendCom, sampType, 
+      patient, FDsampCode, sex, 
+      age, testIll, stage, 
+      orig, family, collMan, 
+      buildTime, index_seq, bookCode, 
+      testType, pdfCompany, delflag, 
+      state, flat, testProInfoTestSkill, 
+      downTime, sendSamp, sendDet, 
+      back, doctor, postname, 
+      posttele, postemail, cardId, 
+      tele, parentOrig, address, 
+      testDeep, charge, reportIf, 
+      reportLang, collTime, reportPerson, 
+      reportTime, reportCheck, reportCheckTime, 
+      Ill, Illtem, state3, 
+      bookCodeTemp, sampTypeTemp, testTypeTemp, 
+      otherIll, judge, otherexp, 
+      sampCollTime, linkId, remark
+      )
+    values (#{collinfoid,jdbcType=INTEGER}, #{sendcom,jdbcType=VARCHAR}, #{samptype,jdbcType=VARCHAR}, 
+      #{patient,jdbcType=VARCHAR}, #{fdsampcode,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=VARCHAR}, #{testill,jdbcType=VARCHAR}, #{stage,jdbcType=VARCHAR}, 
+      #{orig,jdbcType=VARCHAR}, #{family,jdbcType=VARCHAR}, #{collman,jdbcType=VARCHAR}, 
+      #{buildtime,jdbcType=DATE}, #{indexSeq,jdbcType=VARCHAR}, #{bookcode,jdbcType=VARCHAR}, 
+      #{testtype,jdbcType=VARCHAR}, #{pdfcompany,jdbcType=VARCHAR}, #{delflag,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{flat,jdbcType=VARCHAR}, #{testproinfotestskill,jdbcType=VARCHAR}, 
+      #{downtime,jdbcType=DATE}, #{sendsamp,jdbcType=DATE}, #{senddet,jdbcType=VARCHAR}, 
+      #{back,jdbcType=VARCHAR}, #{doctor,jdbcType=VARCHAR}, #{postname,jdbcType=VARCHAR}, 
+      #{posttele,jdbcType=VARCHAR}, #{postemail,jdbcType=VARCHAR}, #{cardid,jdbcType=VARCHAR}, 
+      #{tele,jdbcType=VARCHAR}, #{parentorig,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{testdeep,jdbcType=VARCHAR}, #{charge,jdbcType=VARCHAR}, #{reportif,jdbcType=VARCHAR}, 
+      #{reportlang,jdbcType=VARCHAR}, #{colltime,jdbcType=DATE}, #{reportperson,jdbcType=VARCHAR}, 
+      #{reporttime,jdbcType=VARCHAR}, #{reportcheck,jdbcType=VARCHAR}, #{reportchecktime,jdbcType=VARCHAR}, 
+      #{ill,jdbcType=VARCHAR}, #{illtem,jdbcType=VARCHAR}, #{state3,jdbcType=VARCHAR}, 
+      #{bookcodetemp,jdbcType=VARCHAR}, #{samptypetemp,jdbcType=VARCHAR}, #{testtypetemp,jdbcType=VARCHAR}, 
+      #{otherill,jdbcType=LONGVARCHAR}, #{judge,jdbcType=LONGVARCHAR}, #{otherexp,jdbcType=LONGVARCHAR}, 
+      #{sampcolltime,jdbcType=LONGVARCHAR}, #{linkid,jdbcType=LONGVARCHAR}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fd.report.entity.collinfoWithBLOBs" >
+    insert into collinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collinfoid != null" >
+        collInfoId,
+      </if>
+      <if test="sendcom != null" >
+        sendCom,
+      </if>
+      <if test="samptype != null" >
+        sampType,
+      </if>
+      <if test="patient != null" >
+        patient,
+      </if>
+      <if test="fdsampcode != null" >
+        FDsampCode,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="testill != null" >
+        testIll,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+      <if test="orig != null" >
+        orig,
+      </if>
+      <if test="family != null" >
+        family,
+      </if>
+      <if test="collman != null" >
+        collMan,
+      </if>
+      <if test="buildtime != null" >
+        buildTime,
+      </if>
+      <if test="indexSeq != null" >
+        index_seq,
+      </if>
+      <if test="bookcode != null" >
+        bookCode,
+      </if>
+      <if test="testtype != null" >
+        testType,
+      </if>
+      <if test="pdfcompany != null" >
+        pdfCompany,
+      </if>
+      <if test="delflag != null" >
+        delflag,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="flat != null" >
+        flat,
+      </if>
+      <if test="testproinfotestskill != null" >
+        testProInfoTestSkill,
+      </if>
+      <if test="downtime != null" >
+        downTime,
+      </if>
+      <if test="sendsamp != null" >
+        sendSamp,
+      </if>
+      <if test="senddet != null" >
+        sendDet,
+      </if>
+      <if test="back != null" >
+        back,
+      </if>
+      <if test="doctor != null" >
+        doctor,
+      </if>
+      <if test="postname != null" >
+        postname,
+      </if>
+      <if test="posttele != null" >
+        posttele,
+      </if>
+      <if test="postemail != null" >
+        postemail,
+      </if>
+      <if test="cardid != null" >
+        cardId,
+      </if>
+      <if test="tele != null" >
+        tele,
+      </if>
+      <if test="parentorig != null" >
+        parentOrig,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="testdeep != null" >
+        testDeep,
+      </if>
+      <if test="charge != null" >
+        charge,
+      </if>
+      <if test="reportif != null" >
+        reportIf,
+      </if>
+      <if test="reportlang != null" >
+        reportLang,
+      </if>
+      <if test="colltime != null" >
+        collTime,
+      </if>
+      <if test="reportperson != null" >
+        reportPerson,
+      </if>
+      <if test="reporttime != null" >
+        reportTime,
+      </if>
+      <if test="reportcheck != null" >
+        reportCheck,
+      </if>
+      <if test="reportchecktime != null" >
+        reportCheckTime,
+      </if>
+      <if test="ill != null" >
+        Ill,
+      </if>
+      <if test="illtem != null" >
+        Illtem,
+      </if>
+      <if test="state3 != null" >
+        state3,
+      </if>
+      <if test="bookcodetemp != null" >
+        bookCodeTemp,
+      </if>
+      <if test="samptypetemp != null" >
+        sampTypeTemp,
+      </if>
+      <if test="testtypetemp != null" >
+        testTypeTemp,
+      </if>
+      <if test="otherill != null" >
+        otherIll,
+      </if>
+      <if test="judge != null" >
+        judge,
+      </if>
+      <if test="otherexp != null" >
+        otherexp,
+      </if>
+      <if test="sampcolltime != null" >
+        sampCollTime,
+      </if>
+      <if test="linkid != null" >
+        linkId,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collinfoid != null" >
+        #{collinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="sendcom != null" >
+        #{sendcom,jdbcType=VARCHAR},
+      </if>
+      <if test="samptype != null" >
+        #{samptype,jdbcType=VARCHAR},
+      </if>
+      <if test="patient != null" >
+        #{patient,jdbcType=VARCHAR},
+      </if>
+      <if test="fdsampcode != null" >
+        #{fdsampcode,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="testill != null" >
+        #{testill,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="orig != null" >
+        #{orig,jdbcType=VARCHAR},
+      </if>
+      <if test="family != null" >
+        #{family,jdbcType=VARCHAR},
+      </if>
+      <if test="collman != null" >
+        #{collman,jdbcType=VARCHAR},
+      </if>
+      <if test="buildtime != null" >
+        #{buildtime,jdbcType=DATE},
+      </if>
+      <if test="indexSeq != null" >
+        #{indexSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcode != null" >
+        #{bookcode,jdbcType=VARCHAR},
+      </if>
+      <if test="testtype != null" >
+        #{testtype,jdbcType=VARCHAR},
+      </if>
+      <if test="pdfcompany != null" >
+        #{pdfcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null" >
+        #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="flat != null" >
+        #{flat,jdbcType=VARCHAR},
+      </if>
+      <if test="testproinfotestskill != null" >
+        #{testproinfotestskill,jdbcType=VARCHAR},
+      </if>
+      <if test="downtime != null" >
+        #{downtime,jdbcType=DATE},
+      </if>
+      <if test="sendsamp != null" >
+        #{sendsamp,jdbcType=DATE},
+      </if>
+      <if test="senddet != null" >
+        #{senddet,jdbcType=VARCHAR},
+      </if>
+      <if test="back != null" >
+        #{back,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor != null" >
+        #{doctor,jdbcType=VARCHAR},
+      </if>
+      <if test="postname != null" >
+        #{postname,jdbcType=VARCHAR},
+      </if>
+      <if test="posttele != null" >
+        #{posttele,jdbcType=VARCHAR},
+      </if>
+      <if test="postemail != null" >
+        #{postemail,jdbcType=VARCHAR},
+      </if>
+      <if test="cardid != null" >
+        #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="tele != null" >
+        #{tele,jdbcType=VARCHAR},
+      </if>
+      <if test="parentorig != null" >
+        #{parentorig,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="testdeep != null" >
+        #{testdeep,jdbcType=VARCHAR},
+      </if>
+      <if test="charge != null" >
+        #{charge,jdbcType=VARCHAR},
+      </if>
+      <if test="reportif != null" >
+        #{reportif,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlang != null" >
+        #{reportlang,jdbcType=VARCHAR},
+      </if>
+      <if test="colltime != null" >
+        #{colltime,jdbcType=DATE},
+      </if>
+      <if test="reportperson != null" >
+        #{reportperson,jdbcType=VARCHAR},
+      </if>
+      <if test="reporttime != null" >
+        #{reporttime,jdbcType=VARCHAR},
+      </if>
+      <if test="reportcheck != null" >
+        #{reportcheck,jdbcType=VARCHAR},
+      </if>
+      <if test="reportchecktime != null" >
+        #{reportchecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="ill != null" >
+        #{ill,jdbcType=VARCHAR},
+      </if>
+      <if test="illtem != null" >
+        #{illtem,jdbcType=VARCHAR},
+      </if>
+      <if test="state3 != null" >
+        #{state3,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcodetemp != null" >
+        #{bookcodetemp,jdbcType=VARCHAR},
+      </if>
+      <if test="samptypetemp != null" >
+        #{samptypetemp,jdbcType=VARCHAR},
+      </if>
+      <if test="testtypetemp != null" >
+        #{testtypetemp,jdbcType=VARCHAR},
+      </if>
+      <if test="otherill != null" >
+        #{otherill,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="judge != null" >
+        #{judge,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="otherexp != null" >
+        #{otherexp,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sampcolltime != null" >
+        #{sampcolltime,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="linkid != null" >
+        #{linkid,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fd.report.entity.collinfoWithBLOBs" >
+    update collinfo
+    <set >
+      <if test="sendcom != null" >
+        sendCom = #{sendcom,jdbcType=VARCHAR},
+      </if>
+      <if test="samptype != null" >
+        sampType = #{samptype,jdbcType=VARCHAR},
+      </if>
+      <if test="patient != null" >
+        patient = #{patient,jdbcType=VARCHAR},
+      </if>
+      <if test="fdsampcode != null" >
+        FDsampCode = #{fdsampcode,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="testill != null" >
+        testIll = #{testill,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="orig != null" >
+        orig = #{orig,jdbcType=VARCHAR},
+      </if>
+      <if test="family != null" >
+        family = #{family,jdbcType=VARCHAR},
+      </if>
+      <if test="collman != null" >
+        collMan = #{collman,jdbcType=VARCHAR},
+      </if>
+      <if test="buildtime != null" >
+        buildTime = #{buildtime,jdbcType=DATE},
+      </if>
+      <if test="indexSeq != null" >
+        index_seq = #{indexSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcode != null" >
+        bookCode = #{bookcode,jdbcType=VARCHAR},
+      </if>
+      <if test="testtype != null" >
+        testType = #{testtype,jdbcType=VARCHAR},
+      </if>
+      <if test="pdfcompany != null" >
+        pdfCompany = #{pdfcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null" >
+        delflag = #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="flat != null" >
+        flat = #{flat,jdbcType=VARCHAR},
+      </if>
+      <if test="testproinfotestskill != null" >
+        testProInfoTestSkill = #{testproinfotestskill,jdbcType=VARCHAR},
+      </if>
+      <if test="downtime != null" >
+        downTime = #{downtime,jdbcType=DATE},
+      </if>
+      <if test="sendsamp != null" >
+        sendSamp = #{sendsamp,jdbcType=DATE},
+      </if>
+      <if test="senddet != null" >
+        sendDet = #{senddet,jdbcType=VARCHAR},
+      </if>
+      <if test="back != null" >
+        back = #{back,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor != null" >
+        doctor = #{doctor,jdbcType=VARCHAR},
+      </if>
+      <if test="postname != null" >
+        postname = #{postname,jdbcType=VARCHAR},
+      </if>
+      <if test="posttele != null" >
+        posttele = #{posttele,jdbcType=VARCHAR},
+      </if>
+      <if test="postemail != null" >
+        postemail = #{postemail,jdbcType=VARCHAR},
+      </if>
+      <if test="cardid != null" >
+        cardId = #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="tele != null" >
+        tele = #{tele,jdbcType=VARCHAR},
+      </if>
+      <if test="parentorig != null" >
+        parentOrig = #{parentorig,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="testdeep != null" >
+        testDeep = #{testdeep,jdbcType=VARCHAR},
+      </if>
+      <if test="charge != null" >
+        charge = #{charge,jdbcType=VARCHAR},
+      </if>
+      <if test="reportif != null" >
+        reportIf = #{reportif,jdbcType=VARCHAR},
+      </if>
+      <if test="reportlang != null" >
+        reportLang = #{reportlang,jdbcType=VARCHAR},
+      </if>
+      <if test="colltime != null" >
+        collTime = #{colltime,jdbcType=DATE},
+      </if>
+      <if test="reportperson != null" >
+        reportPerson = #{reportperson,jdbcType=VARCHAR},
+      </if>
+      <if test="reporttime != null" >
+        reportTime = #{reporttime,jdbcType=VARCHAR},
+      </if>
+      <if test="reportcheck != null" >
+        reportCheck = #{reportcheck,jdbcType=VARCHAR},
+      </if>
+      <if test="reportchecktime != null" >
+        reportCheckTime = #{reportchecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="ill != null" >
+        Ill = #{ill,jdbcType=VARCHAR},
+      </if>
+      <if test="illtem != null" >
+        Illtem = #{illtem,jdbcType=VARCHAR},
+      </if>
+      <if test="state3 != null" >
+        state3 = #{state3,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcodetemp != null" >
+        bookCodeTemp = #{bookcodetemp,jdbcType=VARCHAR},
+      </if>
+      <if test="samptypetemp != null" >
+        sampTypeTemp = #{samptypetemp,jdbcType=VARCHAR},
+      </if>
+      <if test="testtypetemp != null" >
+        testTypeTemp = #{testtypetemp,jdbcType=VARCHAR},
+      </if>
+      <if test="otherill != null" >
+        otherIll = #{otherill,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="judge != null" >
+        judge = #{judge,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="otherexp != null" >
+        otherexp = #{otherexp,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sampcolltime != null" >
+        sampCollTime = #{sampcolltime,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="linkid != null" >
+        linkId = #{linkid,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where collInfoId = #{collinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fd.report.entity.collinfoWithBLOBs" >
+    update collinfo
+    set sendCom = #{sendcom,jdbcType=VARCHAR},
+      sampType = #{samptype,jdbcType=VARCHAR},
+      patient = #{patient,jdbcType=VARCHAR},
+      FDsampCode = #{fdsampcode,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      testIll = #{testill,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=VARCHAR},
+      orig = #{orig,jdbcType=VARCHAR},
+      family = #{family,jdbcType=VARCHAR},
+      collMan = #{collman,jdbcType=VARCHAR},
+      buildTime = #{buildtime,jdbcType=DATE},
+      index_seq = #{indexSeq,jdbcType=VARCHAR},
+      bookCode = #{bookcode,jdbcType=VARCHAR},
+      testType = #{testtype,jdbcType=VARCHAR},
+      pdfCompany = #{pdfcompany,jdbcType=VARCHAR},
+      delflag = #{delflag,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      flat = #{flat,jdbcType=VARCHAR},
+      testProInfoTestSkill = #{testproinfotestskill,jdbcType=VARCHAR},
+      downTime = #{downtime,jdbcType=DATE},
+      sendSamp = #{sendsamp,jdbcType=DATE},
+      sendDet = #{senddet,jdbcType=VARCHAR},
+      back = #{back,jdbcType=VARCHAR},
+      doctor = #{doctor,jdbcType=VARCHAR},
+      postname = #{postname,jdbcType=VARCHAR},
+      posttele = #{posttele,jdbcType=VARCHAR},
+      postemail = #{postemail,jdbcType=VARCHAR},
+      cardId = #{cardid,jdbcType=VARCHAR},
+      tele = #{tele,jdbcType=VARCHAR},
+      parentOrig = #{parentorig,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      testDeep = #{testdeep,jdbcType=VARCHAR},
+      charge = #{charge,jdbcType=VARCHAR},
+      reportIf = #{reportif,jdbcType=VARCHAR},
+      reportLang = #{reportlang,jdbcType=VARCHAR},
+      collTime = #{colltime,jdbcType=DATE},
+      reportPerson = #{reportperson,jdbcType=VARCHAR},
+      reportTime = #{reporttime,jdbcType=VARCHAR},
+      reportCheck = #{reportcheck,jdbcType=VARCHAR},
+      reportCheckTime = #{reportchecktime,jdbcType=VARCHAR},
+      Ill = #{ill,jdbcType=VARCHAR},
+      Illtem = #{illtem,jdbcType=VARCHAR},
+      state3 = #{state3,jdbcType=VARCHAR},
+      bookCodeTemp = #{bookcodetemp,jdbcType=VARCHAR},
+      sampTypeTemp = #{samptypetemp,jdbcType=VARCHAR},
+      testTypeTemp = #{testtypetemp,jdbcType=VARCHAR},
+      otherIll = #{otherill,jdbcType=LONGVARCHAR},
+      judge = #{judge,jdbcType=LONGVARCHAR},
+      otherexp = #{otherexp,jdbcType=LONGVARCHAR},
+      sampCollTime = #{sampcolltime,jdbcType=LONGVARCHAR},
+      linkId = #{linkid,jdbcType=LONGVARCHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where collInfoId = #{collinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fd.report.entity.collinfo" >
+    update collinfo
+    set sendCom = #{sendcom,jdbcType=VARCHAR},
+      sampType = #{samptype,jdbcType=VARCHAR},
+      patient = #{patient,jdbcType=VARCHAR},
+      FDsampCode = #{fdsampcode,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      testIll = #{testill,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=VARCHAR},
+      orig = #{orig,jdbcType=VARCHAR},
+      family = #{family,jdbcType=VARCHAR},
+      collMan = #{collman,jdbcType=VARCHAR},
+      buildTime = #{buildtime,jdbcType=DATE},
+      index_seq = #{indexSeq,jdbcType=VARCHAR},
+      bookCode = #{bookcode,jdbcType=VARCHAR},
+      testType = #{testtype,jdbcType=VARCHAR},
+      pdfCompany = #{pdfcompany,jdbcType=VARCHAR},
+      delflag = #{delflag,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      flat = #{flat,jdbcType=VARCHAR},
+      testProInfoTestSkill = #{testproinfotestskill,jdbcType=VARCHAR},
+      downTime = #{downtime,jdbcType=DATE},
+      sendSamp = #{sendsamp,jdbcType=DATE},
+      sendDet = #{senddet,jdbcType=VARCHAR},
+      back = #{back,jdbcType=VARCHAR},
+      doctor = #{doctor,jdbcType=VARCHAR},
+      postname = #{postname,jdbcType=VARCHAR},
+      posttele = #{posttele,jdbcType=VARCHAR},
+      postemail = #{postemail,jdbcType=VARCHAR},
+      cardId = #{cardid,jdbcType=VARCHAR},
+      tele = #{tele,jdbcType=VARCHAR},
+      parentOrig = #{parentorig,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      testDeep = #{testdeep,jdbcType=VARCHAR},
+      charge = #{charge,jdbcType=VARCHAR},
+      reportIf = #{reportif,jdbcType=VARCHAR},
+      reportLang = #{reportlang,jdbcType=VARCHAR},
+      collTime = #{colltime,jdbcType=DATE},
+      reportPerson = #{reportperson,jdbcType=VARCHAR},
+      reportTime = #{reporttime,jdbcType=VARCHAR},
+      reportCheck = #{reportcheck,jdbcType=VARCHAR},
+      reportCheckTime = #{reportchecktime,jdbcType=VARCHAR},
+      Ill = #{ill,jdbcType=VARCHAR},
+      Illtem = #{illtem,jdbcType=VARCHAR},
+      state3 = #{state3,jdbcType=VARCHAR},
+      bookCodeTemp = #{bookcodetemp,jdbcType=VARCHAR},
+      sampTypeTemp = #{samptypetemp,jdbcType=VARCHAR},
+      testTypeTemp = #{testtypetemp,jdbcType=VARCHAR}
+    where collInfoId = #{collinfoid,jdbcType=INTEGER}
+  </update>
+</mapper>
